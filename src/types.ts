@@ -6,23 +6,31 @@ export type OrderStatus =
   | 'DELIVERED' 
   | 'CANCELLED';
 
+export interface ItemSizes {
+  small?: number;
+  medium?: number;
+  large?: number;
+}
+
 export interface MenuItem {
   id: string;
   name: string;
   description: string;
   category: string;
-  price: number; // in PKR
+  price: number; // in PKR (base / small price if sizes enabled)
   image: string;
   isAvailable: boolean;
   isSoldOut?: boolean;
   isFeatured?: boolean;
+  hasSizes?: boolean;
+  sizes?: ItemSizes;
 }
 
 export interface SpecialDeal {
   id: string;
   name: string;
   description: string;
-  price: number; // in PKR
+  price: number; // in PKR (base / small price if sizes enabled)
   originalPrice?: number; // in PKR
   image: string;
   includedProductIds?: string[];
@@ -32,6 +40,8 @@ export interface SpecialDeal {
   isActive: boolean;
   createdAt: string;
   updatedAt: string;
+  hasSizes?: boolean;
+  sizes?: ItemSizes;
 }
 
 export interface OrderItem {
@@ -40,6 +50,7 @@ export interface OrderItem {
   price: number;
   quantity: number;
   image: string;
+  size?: 'Small' | 'Medium' | 'Large' | string;
   notes?: string;
 }
 
