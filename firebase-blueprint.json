@@ -1,0 +1,89 @@
+{
+  "entities": {
+    "orders": {
+      "title": "Order",
+      "description": "Food orders placed by customers",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "customerId": { "type": "string" },
+        "customerEmail": { "type": "string" },
+        "customerName": { "type": "string" },
+        "phone": { "type": "string" },
+        "address": { "type": "string" },
+        "mapLocation": { "type": "string" },
+        "notes": { "type": "string" },
+        "items": { "type": "array" },
+        "subtotal": { "type": "number" },
+        "deliveryFee": { "type": "number" },
+        "total": { "type": "number" },
+        "paymentMethod": { "type": "string" },
+        "status": { "type": "string" },
+        "createdAt": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["id", "customerName", "phone", "address", "items", "subtotal", "total", "status", "createdAt"]
+    },
+    "menu": {
+      "title": "MenuItem",
+      "description": "Menu items offered in the store",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "description": { "type": "string" },
+        "price": { "type": "number" },
+        "category": { "type": "string" },
+        "image": { "type": "string" },
+        "available": { "type": "boolean" },
+        "isPopular": { "type": "boolean" },
+        "spicyLevel": { "type": "number" }
+      },
+      "required": ["id", "name", "price", "category", "image"]
+    },
+    "settings": {
+      "title": "AdminSettings",
+      "description": "Global store configurations and settings",
+      "type": "object",
+      "properties": {
+        "deliveryFee": { "type": "number" },
+        "storeIsOpen": { "type": "boolean" },
+        "announcement": { "type": "string" }
+      }
+    },
+    "customers": {
+      "title": "CustomerUser",
+      "description": "Registered customer accounts",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "phone": { "type": "string" },
+        "email": { "type": "string" },
+        "name": { "type": "string" },
+        "address": { "type": "string" },
+        "passwordHash": { "type": "string" },
+        "createdAt": { "type": "string" }
+      }
+    },
+    "special_deals": {
+      "title": "SpecialDeal",
+      "description": "Promotional and seasonal combo deals",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "description": { "type": "string" },
+        "price": { "type": "number" },
+        "originalPrice": { "type": "number" },
+        "image": { "type": "string" },
+        "includedProductIds": { "type": "array" },
+        "startDate": { "type": "string" },
+        "endDate": { "type": "string" },
+        "isActive": { "type": "boolean" },
+        "createdAt": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["id", "name", "price", "image", "startDate", "endDate", "isActive"]
+    }
+  }
+}

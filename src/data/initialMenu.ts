@@ -1,0 +1,901 @@
+import { MenuItem } from '../types';
+
+export const MENU_CATEGORIES = [
+  'Cheezy Pizzas',
+  'Burgers',
+  'Fries',
+  'Starter',
+  'Wraps',
+  'Sandwiches',
+  'Fried Items',
+  'Clock Deals',
+  'Special Deals',
+  'Kunafa',
+  'Beverages',
+  'Fry Fish'
+] as const;
+
+export type MenuCategoryName = typeof MENU_CATEGORIES[number];
+
+export function normalizeMenuCategory(category: string): MenuCategoryName {
+  const c = (category || '').trim().toLowerCase();
+  if (c.includes('pizza')) return 'Cheezy Pizzas';
+  if (c.includes('burger')) return 'Burgers';
+  if (c.includes('frie')) return 'Fries';
+  if (c.includes('wrap') || c.includes('shawarma')) return 'Wraps';
+  if (c.includes('sandwich')) return 'Sandwiches';
+  if (c.includes('fried') || c.includes('chicken') || c.includes('wing') || c.includes('nugget') || c.includes('shot')) return 'Fried Items';
+  if (c.includes('clock deal') || c === 'deals') return 'Clock Deals';
+  if (c.includes('special deal')) return 'Special Deals';
+  if (c.includes('kunafa')) return 'Kunafa';
+  if (c.includes('beverage') || c.includes('drink') || c.includes('water') || c.includes('juice') || c.includes('shake')) return 'Beverages';
+  if (c.includes('fish') || c.includes('seafood')) return 'Fry Fish';
+  if (c.includes('starter') || c.includes('pasta') || c.includes('roll') || c.includes('stick') || c.includes('salad') || c.includes('calzone')) return 'Starter';
+  return 'Starter';
+}
+
+export const initialMenu: MenuItem[] = [
+  // ==========================================
+  // 1. 🍕 CHEEZY PIZZAS
+  // ==========================================
+  {
+    id: 'pz-1',
+    name: 'Crown Crust Pizza',
+    description: 'Crown shaped stuffed crust pizza loaded with mozzarella and choice of flavors. (Med: Rs. 1,280 | Lrg: Rs. 1,680 | XL: Rs. 2,450)',
+    category: 'Cheezy Pizzas',
+    price: 1280,
+    image: 'https://images.unsplash.com/photo-1534308983496-4fabb1a015ee?auto=format&fit=crop&q=80&w=800',
+    isAvailable: true,
+    isFeatured: true
+  },
+  {
+    id: 'pz-2',
+    name: 'Special Malai Boti Pizza',
+    description: 'Creamy malai boti chicken chunks, mushrooms, onions, and garlic sauce drip. (Med: Rs. 1,280 | Lrg: Rs. 1,680 | XL: Rs. 2,450)',
+    category: 'Cheezy Pizzas',
+    price: 1280,
+    image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&q=80&w=800',
+    isAvailable: true,
+    isFeatured: true
+  },
+  {
+    id: 'pz-3',
+    name: 'Beef Lovers Pizza',
+    description: 'Loaded with premium minced beef, pepperoni, jalapeños, and extra cheese. (Med: Rs. 1,380 | Lrg: Rs. 1,950 | XL: Rs. 2,750)',
+    category: 'Cheezy Pizzas',
+    price: 1380,
+    image: 'https://images.unsplash.com/photo-1628840042765-356cda07504e?auto=format&fit=crop&q=80&w=800',
+    isAvailable: true
+  },
+  {
+    id: 'pz-4',
+    name: 'Supreme Pizza',
+    description: 'Combination of chicken tikka, fajita, pepperoni, mushrooms, olives, and capsicum. (Med: Rs. 1,150 | Lrg: Rs. 1,520 | XL: Rs. 2,250)',
+    category: 'Cheezy Pizzas',
+    price: 1150,
+    image: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&q=80&w=800',
+    isAvailable: true
+  },
+  {
+    id: 'pz-5',
+    name: 'Euro Pizza',
+    description: 'Gourmet European flavor topped with smoked chicken, sweet corn, mushrooms, and oregano. (Med: Rs. 1,150 | Lrg: Rs. 1,520 | XL: Rs. 2,250)',
+    category: 'Cheezy Pizzas',
+    price: 1150,
+    image: 'https://images.unsplash.com/photo-1573821663912-569905455b1c?auto=format&fit=crop&q=80&w=800',
+    isAvailable: true
+  },
+  {
+    id: 'pz-6',
+    name: 'Creamy Melt Pizza',
+    description: 'Ultra rich creamy base sauce topped with tender chicken, melted cheese blend, and herbs. (Med: Rs. 1,150 | Lrg: Rs. 1,520 | XL: Rs. 2,250)',
+    category: 'Cheezy Pizzas',
+    price: 1150,
+    image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&q=80&w=800',
+    isAvailable: true
+  },
+  {
+    id: 'pz-7',
+    name: 'Chicken Mushroom Pizza',
+    description: 'Succulent grilled chicken with sliced fresh mushrooms, mozzarella, and garlic tomato sauce. (Med: Rs. 1,150 | Lrg: Rs. 1,520 | XL: Rs. 2,250)',
+    category: 'Cheezy Pizzas',
+    price: 1150,
+    image: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&q=80&w=800',
+    isAvailable: true
+  },
+  {
+    id: 'pz-8',
+    name: 'Chicken Tikka Pizza',
+    description: 'Traditional Pakistani chicken tikka, onions, capsicum, and mozzarella. (Small: Rs. 600 | Med: Rs. 1,020 | Lrg: Rs. 1,350 | XL: Rs. 1,970)',
+    category: 'Cheezy Pizzas',
+    price: 1020,
+    image: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&q=80&w=800',
+    isAvailable: true
+  },
+  {
+    id: 'pz-9',
+    name: 'Chicken Fajita Pizza',
+    description: 'Mexican style chicken fajita, capsicum, onions, and rich mozzarella. (Small: Rs. 600 | Med: Rs. 1,020 | Lrg: Rs. 1,350 | XL: Rs. 1,970)',
+    category: 'Cheezy Pizzas',
+    price: 1020,
+    image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&q=80&w=800',
+    isAvailable: true
+  },
+  {
+    id: 'pz-10',
+    name: 'Hot N Spicy Pizza',
+    description: 'Spicy chicken, spicy jalapeño peppers, onions, capsicum, and chili flakes. (Small: Rs. 600 | Med: Rs. 1,020 | Lrg: Rs. 1,350 | XL: Rs. 1,970)',
+    category: 'Cheezy Pizzas',
+    price: 1020,
+    image: 'https://images.unsplash.com/photo-1628840042765-356cda07504e?auto=format&fit=crop&q=80&w=800',
+    isAvailable: true
+  },
+  {
+    id: 'pz-11',
+    name: 'Black Pepper Tikka Pizza',
+    description: 'Black pepper infused chicken tikka chunks with crunchy onions and melted cheese. (Small: Rs. 600 | Med: Rs. 1,020 | Lrg: Rs. 1,350 | XL: Rs. 1,970)',
+    category: 'Cheezy Pizzas',
+    price: 1020,
+    image: 'https://images.unsplash.com/photo-1573821663912-569905455b1c?auto=format&fit=crop&q=80&w=800',
+    isAvailable: true
+  },
+  {
+    id: 'pz-12',
+    name: 'Cheez Lover Pizza',
+    description: 'Ultimate 100% extra mozzarella and cheddar cheese explosion. (Small: Rs. 600 | Med: Rs. 1,020 | Lrg: Rs. 1,350 | XL: Rs. 1,970)',
+    category: 'Cheezy Pizzas',
+    price: 1020,
+    image: 'https://images.unsplash.com/photo-1573821663912-569905455b1c?auto=format&fit=crop&q=80&w=800',
+    isAvailable: true
+  },
+  {
+    id: 'pz-13',
+    name: 'Vegetarian Pizza',
+    description: 'Fresh bell peppers, tomatoes, mushrooms, black olives, onions, and mozzarella. (Small: Rs. 600 | Med: Rs. 1,020 | Lrg: Rs. 1,350 | XL: Rs. 1,970)',
+    category: 'Cheezy Pizzas',
+    price: 1020,
+    image: 'https://images.unsplash.com/photo-1574071318508-1cdbab80d002?auto=format&fit=crop&q=80&w=800',
+    isAvailable: true
+  },
+  {
+    id: 'pz-14',
+    name: 'Chicken Pepperoni Pizza',
+    description: 'Classic chicken pepperoni slices layered on molten mozzarella cheese. (Small: Rs. 600 | Med: Rs. 1,020 | Lrg: Rs. 1,350 | XL: Rs. 1,970)',
+    category: 'Cheezy Pizzas',
+    price: 1020,
+    image: 'https://images.unsplash.com/photo-1534308983496-4fabb1a015ee?auto=format&fit=crop&q=80&w=800',
+    isAvailable: true
+  },
+  {
+    id: 'pz-15',
+    name: 'Sausages Pizza',
+    description: 'Sliced chicken sausages, capsicum, onions, and oregano seasonings. (Small: Rs. 600 | Med: Rs. 1,020 | Lrg: Rs. 1,350 | XL: Rs. 1,970)',
+    category: 'Cheezy Pizzas',
+    price: 1020,
+    image: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&q=80&w=800',
+    isAvailable: true
+  },
+
+  // ==========================================
+  // 2. 🍔 BURGERS
+  // ==========================================
+  {
+    id: 'bg-1',
+    name: 'Special Cheez Lava Burger',
+    description: 'Crispy fried chicken fillet topped with molten liquid cheese lava dip and secret house sauce.',
+    category: 'Burgers',
+    price: 780,
+    image: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&q=80&w=800',
+    isAvailable: true,
+    isFeatured: true
+  },
+  {
+    id: 'bg-6',
+    name: 'American Beef Burger',
+    description: 'Double beef patties, double cheddar slice, pickles, onion rings, and classic barbecue sauce.',
+    category: 'Burgers',
+    price: 980,
+    image: 'https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&q=80&w=800',
+    isAvailable: true,
+    isFeatured: true
+  },
+  {
+    id: 'bg-2',
+    name: 'Zinger Burger',
+    description: 'Classic crispy zinger fillet, lettuce, mayonnaise, and soft sesame seed bun.',
+    category: 'Burgers',
+    price: 380,
+    image: 'https://images.unsplash.com/photo-1625813506062-0aeb1d7a094b?auto=format&fit=crop&q=80&w=800',
+    isAvailable: true,
+    isFeatured: true
+  },
+  {
+    id: 'bg-3',
+    name: 'Chicken Patty Burger',
+    description: 'Golden chicken patty topped with mayonnaise and crisp iceberg lettuce.',
+    category: 'Burgers',
+    price: 350,
+    image: 'https://images.unsplash.com/photo-1586190848861-99aa4a171e90?auto=format&fit=crop&q=80&w=800',
+    isAvailable: true
+  },
+  {
+    id: 'bg-4',
+    name: 'Beef Patty Jalapeno Burger',
+    description: 'Grilled beef patty, spicy jalapeño slices, cheddar cheese, and smoky chipotle mayo.',
+    category: 'Burgers',
+    price: 680,
+    image: 'https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&q=80&w=800',
+    isAvailable: true
+  },
+  {
+    id: 'bg-5',
+    name: 'Beef Patty Mushroom Burger',
+    description: 'Juicy smashed beef patty with sautéed mushrooms, caramelized onions, and melted Swiss cheese.',
+    category: 'Burgers',
+    price: 680,
+    image: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&q=80&w=800',
+    isAvailable: true
+  },
+  {
+    id: 'bg-7',
+    name: 'Thunder Burger',
+    description: 'Extra spicy crispy chicken fillet with fire sauce and jalapeños.',
+    category: 'Burgers',
+    price: 480,
+    image: 'https://images.unsplash.com/photo-1586190848861-99aa4a171e90?auto=format&fit=crop&q=80&w=800',
+    isAvailable: true
+  },
+  {
+    id: 'bg-8',
+    name: 'Fish Burger',
+    description: 'Crispy fried fish fillet, tartar sauce, lettuce, and soft brioche bun.',
+    category: 'Burgers',
+    price: 980,
+    image: 'https://images.unsplash.com/photo-1521305916504-4a1121188589?auto=format&fit=crop&q=80&w=800',
+    isAvailable: true
+  },
+
+  // ==========================================
+  // 3. 🍟 FRIES
+  // ==========================================
+  {
+    id: 'fr-0',
+    name: 'Crispy Chicken Fries',
+    description: 'Golden seasoned crispy chicken fillet fries served piping hot with signature garlic mayo dip.',
+    category: 'Fries',
+    price: 490,
+    image: 'https://images.unsplash.com/photo-1562967914-608f82629710?auto=format&fit=crop&q=80&w=800',
+    isAvailable: true,
+    isFeatured: true
+  },
+  {
+    id: 'fr-4',
+    name: 'Loaded Fries',
+    description: 'Smothered with molten liquid cheese, crispy chicken chunks, and spicy jalapeños. (Regular: Rs. 520 | Large: Rs. 690)',
+    category: 'Fries',
+    price: 520,
+    image: 'https://images.unsplash.com/photo-1585109649139-366815a0d713?auto=format&fit=crop&q=80&w=800',
+    isAvailable: true,
+    isFeatured: true
+  },
+  {
+    id: 'fr-1',
+    name: 'Crispy French Fries',
+    description: 'Golden salted crisp French fries cooked to crunchy perfection. (Regular: Rs. 180 | Large: Rs. 300)',
+    category: 'Fries',
+    price: 180,
+    image: 'https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&q=80&w=800',
+    isAvailable: true,
+    isFeatured: true
+  },
+  {
+    id: 'fr-2',
+    name: 'Potato Sticks',
+    description: 'Thin crispy potato sticks with savory spice seasoning. (Regular: Rs. 250 | Large: Rs. 450)',
+    category: 'Fries',
+    price: 250,
+    image: 'https://images.unsplash.com/photo-1518013034458-30b89e82176d?auto=format&fit=crop&q=80&w=800',
+    isAvailable: true
+  },
+  {
+    id: 'fr-3',
+    name: 'Mayo Fries',
+    description: 'Crispy fries drizzled generously with premium garlic mayonnaise. (Regular: Rs. 280 | Large: Rs. 380)',
+    category: 'Fries',
+    price: 280,
+    image: 'https://images.unsplash.com/photo-1541592106381-b31e9677c0e5?auto=format&fit=crop&q=80&w=800',
+    isAvailable: true
+  },
+
+  // ==========================================
+  // 4. 🥗 STARTER
+  // ==========================================
+  {
+    id: 'st-7',
+    name: 'Cheesy Sticks',
+    description: 'Golden fried mozzarella cheese sticks with garlic herb butter glaze and marinara dip.',
+    category: 'Starter',
+    price: 500,
+    image: 'https://images.unsplash.com/photo-1531749668029-2db88e4276c7?auto=format&fit=crop&q=80&w=800',
+    isAvailable: true,
+    isFeatured: true
+  },
+  {
+    id: 'st-5',
+    name: 'Special Roll (6 Pcs)',
+    description: 'Cheez O\'Clock chef\'s special stuffed chicken rolls served with signature dip (6 pieces).',
+    category: 'Starter',
+    price: 820,
+    image: 'https://images.unsplash.com/photo-1561719014-a95e7b2586bf?auto=format&fit=crop&q=80&w=800',
+    isAvailable: true,
+    isFeatured: true
+  },
+  {
+    id: 'pa-4',
+    name: 'Fettuccine Alfredo',
+    description: 'Rich creamy Alfredo pasta with grilled chicken slices and parmesan.',
+    category: 'Starter',
+    price: 980,
+    image: 'https://images.unsplash.com/photo-1645112411341-6c4fd023714a?auto=format&fit=crop&q=80&w=800',
+    isAvailable: true,
+    isFeatured: true
+  },
+  {
+    id: 'pa-5',
+    name: 'Mac N Cheez',
+    description: 'Baked mac and cheese overflowing with cheddar and mozzarella crust.',
+    category: 'Starter',
+    price: 1050,
+    image: 'https://images.unsplash.com/photo-1543339308-43e59d6b73a6?auto=format&fit=crop&q=80&w=800',
+    isAvailable: true,
+    isFeatured: true
+  },
+  {
+    id: 'st-1',
+    name: 'Bihari Roll (4 Pcs)',
+    description: 'Crispy rolls filled with spicy Bihari chicken tikka and melted cheese (4 pieces).',
+    category: 'Starter',
+    price: 560,
+    image: 'https://images.unsplash.com/photo-1541529086526-db283c563270?auto=format&fit=crop&q=80&w=800',
+    isAvailable: true
+  },
+  {
+    id: 'st-2',
+    name: 'Bihari Roll (8 Pcs)',
+    description: 'Family size crispy rolls filled with spicy Bihari chicken tikka and melted cheese (8 pieces).',
+    category: 'Starter',
+    price: 1050,
+    image: 'https://images.unsplash.com/photo-1541529086526-db283c563270?auto=format&fit=crop&q=80&w=800',
+    isAvailable: true
+  },
+  {
+    id: 'st-3',
+    name: 'Arabic Roll (4 Pcs)',
+    description: 'Middle-Eastern style spiced chicken rolls served with garlic toum dip (4 pieces).',
+    category: 'Starter',
+    price: 530,
+    image: 'https://images.unsplash.com/photo-1626700051175-6818013e1d4f?auto=format&fit=crop&q=80&w=800',
+    isAvailable: true
+  },
+  {
+    id: 'st-4',
+    name: 'Arabic Roll (8 Pcs)',
+    description: 'Large platter of Middle-Eastern style spiced chicken rolls with garlic toum dip (8 pieces).',
+    category: 'Starter',
+    price: 1000,
+    image: 'https://images.unsplash.com/photo-1626700051175-6818013e1d4f?auto=format&fit=crop&q=80&w=800',
+    isAvailable: true
+  },
+  {
+    id: 'st-6',
+    name: 'Calzone Chunks',
+    description: 'Bite-sized golden baked calzone stuffed with spicy chicken fajita and gooey mozzarella.',
+    category: 'Starter',
+    price: 880,
+    image: 'https://images.unsplash.com/photo-1534308983496-4fabb1a015ee?auto=format&fit=crop&q=80&w=800',
+    isAvailable: true
+  },
+  {
+    id: 'st-8',
+    name: 'Russian Salad',
+    description: 'Creamy cold salad with diced fruits, potatoes, peas, and sweet mayonnaise dressing.',
+    category: 'Starter',
+    price: 250,
+    image: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&q=80&w=800',
+    isAvailable: true
+  },
+  {
+    id: 'st-9',
+    name: 'Caesar Salad',
+    description: 'Fresh romaine lettuce, crunchy croutons, parmesan cheese, and creamy Caesar dressing.',
+    category: 'Starter',
+    price: 200,
+    image: 'https://images.unsplash.com/photo-1546793665-c74683f339c1?auto=format&fit=crop&q=80&w=800',
+    isAvailable: true
+  },
+  {
+    id: 'pa-1',
+    name: 'Supper Crunch Pasta',
+    description: 'Pasta tossed in spicy sauce topped with crispy zinger chicken chunks.',
+    category: 'Starter',
+    price: 850,
+    image: 'https://images.unsplash.com/photo-1543339308-43e59d6b73a6?auto=format&fit=crop&q=80&w=800',
+    isAvailable: true
+  },
+  {
+    id: 'pa-2',
+    name: 'Regotini Pasta',
+    description: 'Rigatoni pasta cooked in creamy parmesan sauce with herbs and chicken.',
+    category: 'Starter',
+    price: 780,
+    image: 'https://images.unsplash.com/photo-1645112411341-6c4fd023714a?auto=format&fit=crop&q=80&w=800',
+    isAvailable: true
+  },
+  {
+    id: 'pa-3',
+    name: 'Penne Arrabiata',
+    description: 'Penne pasta in spicy tomato basil garlic sauce topped with grilled chicken.',
+    category: 'Starter',
+    price: 780,
+    image: 'https://images.unsplash.com/photo-1621996346565-e3def6164286?auto=format&fit=crop&q=80&w=800',
+    isAvailable: true
+  },
+
+  // ==========================================
+  // 5. 🌯 WRAPS
+  // ==========================================
+  {
+    id: 'wr-3',
+    name: 'Zinger Wrap',
+    description: 'Crispy fried zinger strips topped with special sauce, cheddar slice, and shredded lettuce.',
+    category: 'Wraps',
+    price: 500,
+    image: 'https://images.unsplash.com/photo-1529006557810-274b9b2fc783?auto=format&fit=crop&q=80&w=800',
+    isAvailable: true,
+    isFeatured: true
+  },
+  {
+    id: 'wr-1',
+    name: 'Chicken Classic Wrap',
+    description: 'Classic grilled chicken strips, crisp lettuce, garlic sauce wrapped in soft warm tortilla.',
+    category: 'Wraps',
+    price: 450,
+    image: 'https://images.unsplash.com/photo-1626700051175-6818013e1d4f?auto=format&fit=crop&q=80&w=800',
+    isAvailable: true
+  },
+  {
+    id: 'wr-2',
+    name: 'Seekh Kabab Wrap',
+    description: 'Juicy spiced chicken seekh kabab rolled in tortilla with onion, mint chutney, and garlic mayo.',
+    category: 'Wraps',
+    price: 450,
+    image: 'https://images.unsplash.com/photo-1561719014-a95e7b2586bf?auto=format&fit=crop&q=80&w=800',
+    isAvailable: true
+  },
+  {
+    id: 'wr-4',
+    name: 'Tikka Bites Wrap',
+    description: 'Smoky chicken tikka chunks wrapped in soft paratha tortilla with spicy sauce.',
+    category: 'Wraps',
+    price: 400,
+    image: 'https://images.unsplash.com/photo-1626700051175-6818013e1d4f?auto=format&fit=crop&q=80&w=800',
+    isAvailable: true
+  },
+
+  // ==========================================
+  // 6. 🥪 SANDWICHES
+  // ==========================================
+  {
+    id: 'sw-1',
+    name: 'Club Sandwich',
+    description: 'Triple-decker toasted sandwich filled with grilled chicken, egg, cheese, lettuce, and mayo. Served with fries.',
+    category: 'Sandwiches',
+    price: 520,
+    image: 'https://images.unsplash.com/photo-1528735602780-2552fd46c7af?auto=format&fit=crop&q=80&w=800',
+    isAvailable: true,
+    isFeatured: true
+  },
+  {
+    id: 'sw-3',
+    name: 'Panini Sandwich',
+    description: 'Italian pressed artisan panini with melted mozzarella, seasoned chicken breast, and herb pesto.',
+    category: 'Sandwiches',
+    price: 850,
+    image: 'https://images.unsplash.com/photo-1539252554453-80ab65ce3586?auto=format&fit=crop&q=80&w=800',
+    isAvailable: true,
+    isFeatured: true
+  },
+  {
+    id: 'sw-2',
+    name: 'Euro Sandwich',
+    description: 'European style gourmet grilled sandwich with smoked chicken, garlic cheese spread, and bell peppers.',
+    category: 'Sandwiches',
+    price: 750,
+    image: 'https://images.unsplash.com/photo-1509722747041-616f39b57569?auto=format&fit=crop&q=80&w=800',
+    isAvailable: true
+  },
+  {
+    id: 'sw-4',
+    name: 'Mexican Sandwich',
+    description: 'Zesty Mexican sandwich stuffed with fajita spiced chicken, jalapeños, salsa, and molten cheese.',
+    category: 'Sandwiches',
+    price: 780,
+    image: 'https://images.unsplash.com/photo-1553909489-cd47e0907980?auto=format&fit=crop&q=80&w=800',
+    isAvailable: true
+  },
+
+  // ==========================================
+  // 7. 🍗 FRIED ITEMS
+  // ==========================================
+  {
+    id: 'fc-8',
+    name: 'Albaik Fried Chicken',
+    description: 'Middle-Eastern Albaik style spiced fried chicken piece.',
+    category: 'Fried Items',
+    price: 750,
+    image: 'https://images.unsplash.com/photo-1626645738196-c2a7c87a8f58?auto=format&fit=crop&q=80&w=800',
+    isAvailable: true,
+    isFeatured: true
+  },
+  {
+    id: 'fc-7',
+    name: 'Honey Wings',
+    description: 'Sweet & spicy glazed honey chicken wings. (6 Pcs: Rs. 650 | 12 Pcs: Rs. 1,200)',
+    category: 'Fried Items',
+    price: 650,
+    image: 'https://images.unsplash.com/photo-1527477396000-e27163b481c2?auto=format&fit=crop&q=80&w=800',
+    isAvailable: true,
+    isFeatured: true
+  },
+  {
+    id: 'fc-1',
+    name: 'Chicken Piece',
+    description: 'Crispy fried golden chicken piece.',
+    category: 'Fried Items',
+    price: 650,
+    image: 'https://images.unsplash.com/photo-1626645738196-c2a7c87a8f58?auto=format&fit=crop&q=80&w=800',
+    isAvailable: true
+  },
+  {
+    id: 'fc-2',
+    name: 'One Choice Piece',
+    description: 'Choice piece of crispy fried chicken (leg or breast).',
+    category: 'Fried Items',
+    price: 250,
+    image: 'https://images.unsplash.com/photo-1626645738196-c2a7c87a8f58?auto=format&fit=crop&q=80&w=800',
+    isAvailable: true
+  },
+  {
+    id: 'fc-3',
+    name: 'Chicken Crispy Strips (3 Pcs)',
+    description: '3 boneless crispy chicken strips with garlic dip.',
+    category: 'Fried Items',
+    price: 550,
+    image: 'https://images.unsplash.com/photo-1562967914-608f82629710?auto=format&fit=crop&q=80&w=800',
+    isAvailable: true
+  },
+  {
+    id: 'fc-4',
+    name: 'Chicken Hot Shots (6 Pcs)',
+    description: '6 bite-sized spicy chicken hot shots.',
+    category: 'Fried Items',
+    price: 350,
+    image: 'https://images.unsplash.com/photo-1562967914-608f82629710?auto=format&fit=crop&q=80&w=800',
+    isAvailable: true
+  },
+  {
+    id: 'fc-5',
+    name: 'Chicken Nuggets',
+    description: 'Golden chicken nuggets. (6 Pcs: Rs. 300 | 20 Pcs: Rs. 700)',
+    category: 'Fried Items',
+    price: 300,
+    image: 'https://images.unsplash.com/photo-1562967914-608f82629710?auto=format&fit=crop&q=80&w=800',
+    isAvailable: true
+  },
+  {
+    id: 'fc-6',
+    name: 'Oven Baked Wings',
+    description: 'Juicy oven baked chicken wings. (6 Pcs: Rs. 480 | 12 Pcs: Rs. 900)',
+    category: 'Fried Items',
+    price: 480,
+    image: 'https://images.unsplash.com/photo-1527477396000-e27163b481c2?auto=format&fit=crop&q=80&w=800',
+    isAvailable: true
+  },
+
+  // ==========================================
+  // 8. ⏰ CLOCK DEALS
+  // ==========================================
+  {
+    id: 'dl-1',
+    name: 'Deal 1',
+    description: '2 Zinger Burgers + 1 Regular Fries + 2 Regular Drinks.',
+    category: 'Clock Deals',
+    price: 1050,
+    image: 'https://images.unsplash.com/photo-1610614819513-58e34989848b?auto=format&fit=crop&q=80&w=800',
+    isAvailable: true,
+    isFeatured: true
+  },
+  {
+    id: 'dl-2',
+    name: 'Deal 2',
+    description: '3 Zinger Burgers + 3 Chicken Pieces + 1 Ltr Soft Drink.',
+    category: 'Clock Deals',
+    price: 1800,
+    image: 'https://images.unsplash.com/photo-1506354666786-959d6d497f1a?auto=format&fit=crop&q=80&w=800',
+    isAvailable: true,
+    isFeatured: true
+  },
+  {
+    id: 'dl-4',
+    name: 'Deal 4',
+    description: '1 Medium Pizza + 1 Regular Fries + 2 Regular Drinks.',
+    category: 'Clock Deals',
+    price: 1280,
+    image: 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&q=80&w=800',
+    isAvailable: true,
+    isFeatured: true
+  },
+  {
+    id: 'dl-5',
+    name: 'Deal 5',
+    description: '1 Large Pizza (Traditional) + 1 Regular Fries + 1 Ltr Soft Drink.',
+    category: 'Clock Deals',
+    price: 1550,
+    image: 'https://images.unsplash.com/photo-1506354666786-959d6d497f1a?auto=format&fit=crop&q=80&w=800',
+    isAvailable: true,
+    isFeatured: true
+  },
+  {
+    id: 'dl-3',
+    name: 'Deal 3',
+    description: '1 Small Pizza + 1 Regular Drink.',
+    category: 'Clock Deals',
+    price: 650,
+    image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&q=80&w=800',
+    isAvailable: true
+  },
+
+  // ==========================================
+  // 10. 🍮 KUNAFA
+  // ==========================================
+  {
+    id: 'kn-1',
+    name: 'Cream Cheez Kunafa',
+    description: 'Traditional Middle-Eastern crispy pastry soaked in sweet syrup with melted cream cheese filling.',
+    category: 'Kunafa',
+    price: 750,
+    image: 'https://images.unsplash.com/photo-1579372786545-d24232daf58c?auto=format&fit=crop&q=80&w=800',
+    isAvailable: true,
+    isFeatured: true
+  },
+  {
+    id: 'kn-3',
+    name: 'Signature Pistachio Kunafa',
+    description: 'Authentic royal kunafa topped with roasted crushed pistachios and sweet blossom syrup.',
+    category: 'Kunafa',
+    price: 1250,
+    image: 'https://images.unsplash.com/photo-1579372786545-d24232daf58c?auto=format&fit=crop&q=80&w=800',
+    isAvailable: true,
+    isFeatured: true
+  },
+  {
+    id: 'kn-2',
+    name: 'Chocolate Kunafa',
+    description: 'Crispy warm kunafa drenched in rich Belgian chocolate sauce and crushed nuts.',
+    category: 'Kunafa',
+    price: 1050,
+    image: 'https://images.unsplash.com/photo-1587314168485-3236d6710814?auto=format&fit=crop&q=80&w=800',
+    isAvailable: true
+  },
+
+  // ==========================================
+  // 11. 🧃 BEVERAGES (Water, Soft Drinks, Juices & Shakes)
+  // ==========================================
+  {
+    id: 'sh-3',
+    name: 'Dates & Dry Fruit Shake',
+    description: 'Nutritious energy shake loaded with premium dates, almonds, pistachios, and milk.',
+    category: 'Beverages',
+    price: 300,
+    image: 'https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&q=80&w=800',
+    isAvailable: true,
+    isFeatured: true
+  },
+  {
+    id: 'jc-4',
+    name: 'Mint Margarita',
+    description: 'Chilled refreshing mint leaves blended with lemon and soda.',
+    category: 'Beverages',
+    price: 180,
+    image: 'https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&q=80&w=800',
+    isAvailable: true,
+    isFeatured: true
+  },
+  {
+    id: 'bv-3',
+    name: '1.5 Litre Soft Drink',
+    description: 'Chilled 1.5 Litre soft drink bottle (Pepsi / 7Up / Mirinda / Mountain Dew).',
+    category: 'Beverages',
+    price: 200,
+    image: 'https://images.unsplash.com/photo-1622483767028-3f66f32aef97?auto=format&fit=crop&q=80&w=800',
+    isAvailable: true,
+    isFeatured: true
+  },
+  {
+    id: 'jc-1',
+    name: 'Fresh Apple Juice',
+    description: '100% fresh pressed apple juice.',
+    category: 'Beverages',
+    price: 250,
+    image: 'https://images.unsplash.com/photo-1613478223719-2ab802602423?auto=format&fit=crop&q=80&w=800',
+    isAvailable: true
+  },
+  {
+    id: 'jc-2',
+    name: 'Carrot + Beetroot Juice',
+    description: 'Healthy fresh carrot and beetroot juice blend.',
+    category: 'Beverages',
+    price: 250,
+    image: 'https://images.unsplash.com/photo-1613478223719-2ab802602423?auto=format&fit=crop&q=80&w=800',
+    isAvailable: true
+  },
+  {
+    id: 'jc-3',
+    name: 'Keeno Juice',
+    description: 'Fresh citrus Keeno orange juice.',
+    category: 'Beverages',
+    price: 250,
+    image: 'https://images.unsplash.com/photo-1613478223719-2ab802602423?auto=format&fit=crop&q=80&w=800',
+    isAvailable: true
+  },
+  {
+    id: 'jc-5',
+    name: 'Falsa Juice',
+    description: 'Sweet and tangy fresh seasonal Falsa juice.',
+    category: 'Beverages',
+    price: 200,
+    image: 'https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&q=80&w=800',
+    isAvailable: true
+  },
+  {
+    id: 'jc-6',
+    name: 'Musammi Juice',
+    description: 'Fresh sweet lime Musammi juice.',
+    category: 'Beverages',
+    price: 200,
+    image: 'https://images.unsplash.com/photo-1613478223719-2ab802602423?auto=format&fit=crop&q=80&w=800',
+    isAvailable: true
+  },
+  {
+    id: 'sh-1',
+    name: 'Mango Shake',
+    description: 'Thick mango milkshake with ice cream.',
+    category: 'Beverages',
+    price: 200,
+    image: 'https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&q=80&w=800',
+    isAvailable: true
+  },
+  {
+    id: 'sh-2',
+    name: 'Apple & Banana Shake',
+    description: 'Healthy fresh apple and banana smoothie shake.',
+    category: 'Beverages',
+    price: 200,
+    image: 'https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&q=80&w=800',
+    isAvailable: true
+  },
+  {
+    id: 'sh-4',
+    name: 'Strawberry Shake',
+    description: 'Sweet strawberry ice cream shake.',
+    category: 'Beverages',
+    price: 250,
+    image: 'https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&q=80&w=800',
+    isAvailable: true
+  },
+  {
+    id: 'sh-5',
+    name: 'Guava Shake',
+    description: 'Refreshing fresh guava fruit shake.',
+    category: 'Beverages',
+    price: 200,
+    image: 'https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&q=80&w=800',
+    isAvailable: true
+  },
+  {
+    id: 'bv-1',
+    name: 'Regular Soft Drink',
+    description: 'Chilled regular soft drink (Pepsi / 7Up / Mirinda).',
+    category: 'Beverages',
+    price: 100,
+    image: 'https://images.unsplash.com/photo-1622483767028-3f66f32aef97?auto=format&fit=crop&q=80&w=800',
+    isAvailable: true
+  },
+  {
+    id: 'bv-2',
+    name: '1 Litre Soft Drink',
+    description: 'Chilled 1 Litre soft drink bottle.',
+    category: 'Beverages',
+    price: 160,
+    image: 'https://images.unsplash.com/photo-1622483767028-3f66f32aef97?auto=format&fit=crop&q=80&w=800',
+    isAvailable: true
+  },
+  {
+    id: 'bv-4',
+    name: 'Small Mineral Water',
+    description: '500ml pure mineral water bottle.',
+    category: 'Beverages',
+    price: 60,
+    image: 'https://images.unsplash.com/photo-1560023907-5f339617ea30?auto=format&fit=crop&q=80&w=800',
+    isAvailable: true
+  },
+  {
+    id: 'bv-5',
+    name: '1.5 Litre Mineral Water',
+    description: '1.5L pure mineral water bottle.',
+    category: 'Beverages',
+    price: 150,
+    image: 'https://images.unsplash.com/photo-1560023907-5f339617ea30?auto=format&fit=crop&q=80&w=800',
+    isAvailable: true
+  },
+
+  // ==========================================
+  // 12. 🐟 FRY FISH
+  // ==========================================
+  {
+    id: 'fs-1',
+    name: 'Finger Fish (1 kg)',
+    description: 'Crispy seasoned boneless finger fish served per kg with garlic tartar dip.',
+    category: 'Fry Fish',
+    price: 2600,
+    image: 'https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&fit=crop&q=80&w=800',
+    isAvailable: true,
+    isFeatured: true
+  },
+  {
+    id: 'fs-5',
+    name: 'Salman Fish',
+    description: 'Gourmet salmon fish fillet grilled/fried with herb garlic butter sauce.',
+    category: 'Fry Fish',
+    price: 2600,
+    image: 'https://images.unsplash.com/photo-1467003909585-2f8a72700288?auto=format&fit=crop&q=80&w=800',
+    isAvailable: true,
+    isFeatured: true
+  },
+  {
+    id: 'fs-2',
+    name: 'Crunchy Finger Fish',
+    description: 'Ultra-crunchy battered fish fillets served hot with spicy tartar sauce.',
+    category: 'Fry Fish',
+    price: 2800,
+    image: 'https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?auto=format&fit=crop&q=80&w=800',
+    isAvailable: true
+  },
+  {
+    id: 'fs-3',
+    name: 'Rahu Fish',
+    description: 'Fresh Rahu fish fried to perfection with traditional Lahori spices.',
+    category: 'Fry Fish',
+    price: 1550,
+    image: 'https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&fit=crop&q=80&w=800',
+    isAvailable: true
+  },
+  {
+    id: 'fs-4',
+    name: 'Mushka Fish',
+    description: 'Pan-fried Mushka fish with crushed spice crust and lemon wedges.',
+    category: 'Fry Fish',
+    price: 2250,
+    image: 'https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?auto=format&fit=crop&q=80&w=800',
+    isAvailable: true
+  },
+  {
+    id: 'fs-6',
+    name: 'Rahu Bar B.Q Fish',
+    description: 'Charcoal grilled Rahu fish marinated in spicy BBQ tikka herbs.',
+    category: 'Fry Fish',
+    price: 1800,
+    image: 'https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&fit=crop&q=80&w=800',
+    isAvailable: true
+  }
+];

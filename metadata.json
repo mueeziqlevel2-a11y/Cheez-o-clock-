@@ -1,0 +1,6 @@
+{
+  "name": "Cheez O'Clock",
+  "description": "Official Cheez O'Clock food ordering platform and host portal for Rawalpindi, Pakistan.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

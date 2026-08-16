@@ -1,0 +1,59 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: 'Bebas Neue', sans-serif;
+  --font-sans: 'Poppins', sans-serif;
+  
+  --color-burgundy-deep: #150404;
+  --color-burgundy: #180505;
+  --color-burgundy-card: #220707;
+  --color-burgundy-light: #380D0D;
+  --color-cheez-red: #DC2626;
+  --color-cheez-yellow: #FFB703;
+  --color-cheez-gold: #FFD166;
+  --color-cheez-orange: #FB8500;
+  --color-cheez-cream: #FFFBEB;
+  --color-cheez-dark: #0D0202;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 140px;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #180505;
+  color: #FFFBEB;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+.font-display {
+  font-family: 'Bebas Neue', cursive, sans-serif;
+  letter-spacing: 0.03em;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #150404;
+}
+::-webkit-scrollbar-thumb {
+  background: #FFB703;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #FB8500;
+}
+
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #FFB703 #150404;
+  -webkit-overflow-scrolling: touch;
+}
+
